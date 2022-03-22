@@ -6,6 +6,7 @@
 #include <fstream>
 
 #include "tokens.hpp"
+#include "errors.hpp"
 
 using namespace std;
 
@@ -13,7 +14,6 @@ namespace lexer {
 
 
   deque<Token> lex(ifstream& in);
-  void unrecognized_token(string token);
 
 
 }

@@ -49,7 +49,7 @@ namespace lexer {
 
         // if there is no last token
         if(last_valid_token.type == TokenType::_ERROR) {
-          unrecognized_token(current);
+          error_unrecognized_token(current, line);
         }
 
         // push the new token and continue
@@ -82,7 +82,7 @@ namespace lexer {
 
     // handle the last tokens
     if(last_valid_token.type == TokenType::_ERROR) {
-      unrecognized_token(current);
+      error_unrecognized_token(current, line);
     }  
 
     // push the new token and continue
@@ -90,18 +90,6 @@ namespace lexer {
 
     // return tokens
     return tokens;
-  }
-
-
-
-  /**
-   * @brief stops the program if an unrecognized token is encountered
-   * 
-   * @param token 
-   */
-  void unrecognized_token(string token) {
-    cout << "Unrecognized token: '" << token << "'" << endl;
-    exit(1);
   }
 
 }

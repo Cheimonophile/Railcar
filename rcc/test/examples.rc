@@ -1,0 +1,9 @@
+
+
+// static constant definition
+nat x 32.
+
+// static function definition
+int main(str[$] args) {
+
+}.

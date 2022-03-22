@@ -1,16 +1,16 @@
 
 
-file ::=
-  statement PERIOD;
+program ::=
+  (statement)*;
 
 statement ::=
-  static_variable;
+  global_definition || ...;
 
-static_variable ::=
-  CONST type ID EQUALS literal;
+global_definition ::=
+  KW_DEF ID literal;
 
 type ::=
-  ID (LCARROT ID (COMMA ID)* RCARROT)?;
+  ID; # (LCARROT ID (COMMA ID)* RCARROT)?;
 
 literal ::=
   NAT_LITERAL;
@@ -19,11 +19,22 @@ literal ::=
 
 
 
-### Keywords
-CONST = "const"
+### Punctuation
+SEMI = ";"
 COMMA = ","
-EQUALS = "="
 LCARROT = "<"
 RCARROT = ">"
+
+### Keywords
+KW_MUT = "mut"
+KW_CONST = "const"
+KW_DEF = "def"
+
+### Operators
+ASSIGN = "="
+
+### ID
 ID = "[a-zA-Z]\w*"
-NAT_LITERAL = "\d+"
+
+### Literals
+NAT_LITERAL = "0(\d|_)+"

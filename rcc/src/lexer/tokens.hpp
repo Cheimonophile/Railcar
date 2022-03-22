@@ -13,14 +13,27 @@ namespace lexer {
    * 
    */
   enum class TokenType {
+
+    // utility
     _ERROR,
     _PARTIAL,
-    KW_CONST,
-    PERIOD,
-    ASSIGN,
+
+    // punctuation
+    SEMI,
     LCARROT,
     RCARROT,
+
+    // key words
+    KW_CONST,
+
+    // operators
+    DOT,
+    ASSIGN,
+
+    // names
     ID,
+
+    // literals
     NAT_LITERAL
   };
 
@@ -37,15 +50,17 @@ namespace lexer {
 
 
   // static tokens
-  static string KW_CONST = "const";
-  static string PERIOD = ".";
-  static string ASSIGN = "=";
+  static string SEMI = ";";
   static string LCARROT = "<";
   static string RCARROT = ">";
+  static string KW_CONST = "const";
+  static string DOT = ".";
+  static string ASSIGN = "=";
 
   // partial tokens
+  TokenType SEMI_match(string token);
   TokenType KW_CONST_match(string token);
-  TokenType PERIOD_match(string token);
+  TokenType DOT_match(string token);
   TokenType ASSIGN_match(string token);
   TokenType LCARROT_match(string token);
   TokenType RCARROT_match(string token);
@@ -54,11 +69,12 @@ namespace lexer {
 
   // match_functions vector
   static vector<TokenType(*)(string)> match_functions = {
-    KW_CONST_match,
-    PERIOD_match,
-    ASSIGN_match,
+    SEMI_match,
     LCARROT_match,
     RCARROT_match,
+    KW_CONST_match,
+    DOT_match,
+    ASSIGN_match,
     ID_match,
     NAT_LITERAL_match
   };

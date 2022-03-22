@@ -1,8 +1,5 @@
-nat x 32;
-x = 32;
+nat x 32
 
-nat foo(nat x, nat y) {
-  ret x + y;
-};
+nat y 0
 
-foo 
+nat z 3_000_000
