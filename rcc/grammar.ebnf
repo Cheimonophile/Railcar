@@ -1,0 +1,29 @@
+
+
+file ::=
+  statement PERIOD;
+
+statement ::=
+  static_variable;
+
+static_variable ::=
+  CONST type ID EQUALS literal;
+
+type ::=
+  ID (LCARROT ID (COMMA ID)* RCARROT)?;
+
+literal ::=
+  NAT_LITERAL;
+
+
+
+
+
+### Keywords
+CONST = "const"
+COMMA = ","
+EQUALS = "="
+LCARROT = "<"
+RCARROT = ">"
+ID = "[a-zA-Z]\w*"
+NAT_LITERAL = "\d+"

@@ -1,0 +1,8 @@
+nat x 32;
+x = 32;
+
+nat foo(nat x, nat y) {
+  ret x + y;
+};
+
+foo 
