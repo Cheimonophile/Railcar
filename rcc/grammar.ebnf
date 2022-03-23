@@ -13,7 +13,9 @@ type ::=
   ID; # (LCARROT ID (COMMA ID)* RCARROT)?;
 
 literal ::=
-  NAT_LITERAL;
+  nat_literal;
+
+nat_literal ::= NAT_LITERAL;
 
 
 

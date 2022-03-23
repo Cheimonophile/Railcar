@@ -1,5 +1,7 @@
 #include "main.hpp"
 
+#include "parser/ast/ProgramAST.hpp"
+
 int main(int argc, char** argv) {
 
   // make sure file path included
@@ -16,8 +18,11 @@ int main(int argc, char** argv) {
 
   // print the tokens
   for(auto& token: tokens) {
-    cout << token.line << ":\t" << token.value << endl;
+    cout << token.line << ":\t" << token.value <<  endl;
   }
+
+  // parse the tokens
+  auto ast = parser::ast::ProgramAST::parse(tokens);
 
   cout << "Done!\n";
 

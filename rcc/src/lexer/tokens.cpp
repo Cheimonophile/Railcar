@@ -57,6 +57,22 @@ namespace lexer {
     return TokenType::_ERROR;
   }
 
+  /**
+   * @brief 
+   * 
+   * @param token 
+   * @return TokenType 
+   */
+  TokenType KW_DEF_match(string token) {
+    if(token == KW_DEF)
+      return TokenType::KW_DEF;
+    if (
+      token.length() < KW_DEF.length() && 
+      token == KW_DEF.substr(0, token.length())
+    ) return TokenType::_PARTIAL;
+    return TokenType::_ERROR;
+  }
+
 
   /**
    * @brief Determines the status of a token that is meant to be an DOT

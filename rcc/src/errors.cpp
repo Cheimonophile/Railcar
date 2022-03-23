@@ -7,7 +7,9 @@
 namespace ecode {
   enum ECode {
     unrecognized_token = 0,
-    unrecognized_statement
+    unrecognized_statement,
+    unexpected_EOF,
+    expected
   };
 }
 
@@ -43,5 +45,31 @@ void error_unrecognized_token(string token, unsigned int line) {
 void error_unrecognized_statement(string token, unsigned int line) {
   error(ecode::unrecognized_statement, line);
   cout << "Statement can't begin with token: '" << token << "'" << endl;
+  exit(1);
+}
+
+
+/**
+ * @brief Unexpected End of File error
+ * 
+ * @param line 
+ */
+void error_unexpected_EOF() {
+  error(ecode::unexpected_EOF, -1);
+  cout << "Unexpected EOF" << endl;
+  exit(1);
+}
+
+
+/**
+ * @brief Expected token but got error
+ * 
+ * @param expected 
+ * @param line 
+ * @param got 
+ */
+void error_expected(string expected, unsigned int line, string got) {
+  error(ecode::expected, line);
+  cout << "Expected '" << expected << "' but got '" << got << "'" << endl;
   exit(1);
 }

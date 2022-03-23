@@ -24,6 +24,7 @@ namespace lexer {
     RCARROT,
 
     // key words
+    KW_DEF,
     KW_CONST,
 
     // operators
@@ -54,12 +55,14 @@ namespace lexer {
   static string LCARROT = "<";
   static string RCARROT = ">";
   static string KW_CONST = "const";
+  static string KW_DEF = "def";
   static string DOT = ".";
   static string ASSIGN = "=";
 
   // partial tokens
   TokenType SEMI_match(string token);
   TokenType KW_CONST_match(string token);
+  TokenType KW_DEF_match(string token);
   TokenType DOT_match(string token);
   TokenType ASSIGN_match(string token);
   TokenType LCARROT_match(string token);
@@ -73,6 +76,7 @@ namespace lexer {
     LCARROT_match,
     RCARROT_match,
     KW_CONST_match,
+    KW_DEF_match,
     DOT_match,
     ASSIGN_match,
     ID_match,

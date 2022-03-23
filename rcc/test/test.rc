@@ -1,5 +1,5 @@
-nat x 32
+def x 32
 
-nat y 0
+def y 0
 
-nat z 3_000_000
+def z 3_000_000
