@@ -1,10 +1,20 @@
+# Global Parameters
+set(CMAKE_CXX_STANDARD 17)
+# set(MACOSX_DEPLOYMENT_TARGET 12.3)
+# set(CMAKE_OSX_SYSROOT /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk)
+# set(CMAKE_CXX_FLAGS "--sysroot ${CMAKE_OSX_SYSROOT} ${CMAKE_CXX_FLAGS}")
+
+# Compiler Flags
+# set(CMAKE_CXX_FLAGS "--sysroot ${CMAKE_OSX_SYSROOT} ${CMAKE_CXX_FLAGS}")
+
+
 cmake_minimum_required(VERSION 3.0.0)
 project(rcc VERSION 0.1.0)
 
 include(CTest)
 enable_testing()
 
-set(CMAKE_CXX_STANDARD 17)
+
 
 
 # Project

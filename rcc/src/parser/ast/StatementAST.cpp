@@ -4,6 +4,8 @@
 
 #include "GlobDefAST.hpp"
 
+#include "util.hpp"
+
 
 namespace parser::ast {
 
@@ -18,17 +20,11 @@ namespace parser::ast {
     // if the statement is a global definition
     if(tokens.empty()) error_unexpected_EOF();
     auto token = tokens[0];
-    auto one = lexer::TokenType::KW_DEF;
-    auto two = lexer::TokenType::KW_CONST;
-
-    if(one == two) {
+    if(token.type == lexer::TokenType::KW_DEF) {
       return GlobDefAST::parse(tokens);
     }
 
-    // if(tokens[0].type == lexer::TokenType::KW_DEF) {
-    //   return GlobDefAST::parse(tokens);
-    // }
-
-    
-  }
+    cout << "MORE TO DO" << endl;
+    exit(1);
+  }     
 }

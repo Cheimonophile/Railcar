@@ -1,9 +1,16 @@
 
 
-// static constant definition
-nat x 32.
+// global constant definition
+def x 32 nat
 
-// static function definition
-int main(str[$] args) {
+// global function definition
+def main(str[] args) int {
 
-}.
+}
+
+lambda (str[] args) int {
+
+}
+
+
+// type definitions
