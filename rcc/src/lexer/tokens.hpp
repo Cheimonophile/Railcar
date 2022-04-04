@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -59,28 +60,37 @@ namespace lexer {
   static string DOT = ".";
   static string ASSIGN = "=";
 
-  // partial tokens
-  TokenType SEMI_match(string token);
-  TokenType KW_CONST_match(string token);
-  TokenType KW_DEF_match(string token);
-  TokenType DOT_match(string token);
-  TokenType ASSIGN_match(string token);
-  TokenType LCARROT_match(string token);
-  TokenType RCARROT_match(string token);
+
+  // keyword vector (to proper ordering)
+  static vector<TokenType> keywords = {
+    TokenType::SEMI,
+    TokenType::LCARROT,
+    TokenType::RCARROT,
+    TokenType::KW_CONST,
+    TokenType::KW_DEF,
+    TokenType::DOT,
+    TokenType::ASSIGN
+  };
+
+
+  // keyword map
+  static map<TokenType, string> keyword_map = {
+    {TokenType::SEMI, SEMI},
+    {TokenType::LCARROT, LCARROT},
+    {TokenType::RCARROT, RCARROT},
+    {TokenType::KW_CONST, KW_CONST},
+    {TokenType::KW_DEF, KW_DEF},
+    {TokenType::DOT, DOT},
+    {TokenType::ASSIGN, ASSIGN},
+  };
+
+
+
+  // match functions
   TokenType ID_match(string token);
   TokenType NAT_LITERAL_match(string token);
 
   // match_functions vector
-  static vector<TokenType(*)(string)> match_functions = {
-    SEMI_match,
-    LCARROT_match,
-    RCARROT_match,
-    KW_CONST_match,
-    KW_DEF_match,
-    DOT_match,
-    ASSIGN_match,
-    ID_match,
-    NAT_LITERAL_match
-  };
+  vector<function<TokenType(string)>> get_match_functions();
 }
 #endif

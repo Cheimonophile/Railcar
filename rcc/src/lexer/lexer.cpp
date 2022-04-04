@@ -7,7 +7,8 @@ namespace lexer {
    * 
    * @return deque<Token> 
    */
-  deque<Token> lex(ifstream& in) {
+  deque<Token> lex(istream& in) {
+    auto match_functions = get_match_functions();
 
     // init the deque
     deque<Token> tokens;
@@ -16,8 +17,8 @@ namespace lexer {
     unsigned int line = 1;
     string current = "";
     Token last_valid_token = Token {
-      .value = "",
       .type = TokenType::_ERROR,
+      .value = "",
       .line = line
     };
     char c;
@@ -55,8 +56,8 @@ namespace lexer {
         // push the new token and continue
         tokens.push_back(last_valid_token);
         last_valid_token = Token {
-          .value = "",
           .type = TokenType::_ERROR,
+          .value = "",
           .line = line
         };
         current = "";
@@ -70,24 +71,27 @@ namespace lexer {
           
           // set last valid token
           last_valid_token = Token {
-            .value = current,
             .type = type,
+            .value = current,
             .line = line
           };
-          in.get(c);
           break;
         }
       }
+      in.get(c);
     }
 
     // handle the last tokens
     if(last_valid_token.type == TokenType::_ERROR) {
-      error_unrecognized_token(current, line);
+      if(tokens.size() < 1) {
+        error_unrecognized_token(current, line);
+      }
     }  
-
-    // push the new token and continue
-    tokens.push_back(last_valid_token);
-
+    else {
+      // push the new token and continue
+      tokens.push_back(last_valid_token);
+    }
+    
     // return tokens
     return tokens;
   }

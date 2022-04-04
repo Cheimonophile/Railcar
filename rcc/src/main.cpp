@@ -15,25 +15,6 @@ int main(int argc, char** argv) {
     print_usage();
   }
 
-  auto three = test::TestEnum::One;
-  auto four = test::TestEnum::Two;
-
-  if(three == four) {
-    cout << "Different" << endl;
-  }
-  else {
-    cout << "same" << endl;
-  }
-
-  auto one = lexer::TokenType::KW_DEF;
-  auto two = lexer::TokenType::KW_CONST;
-
-  if(one == two) {
-    cout << "different" << endl;
-    //return GlobDefAST::parse(tokens);
-  }
-    
-
   // open the file stream
   ifstream file;
   file.open(argv[1], ifstream::in);

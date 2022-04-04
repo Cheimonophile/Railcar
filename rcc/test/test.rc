@@ -1,5 +1,4 @@
-def x 32
 
-def y 0
+def nat x 33
 
-def z 3_000_000
+def nat x 0

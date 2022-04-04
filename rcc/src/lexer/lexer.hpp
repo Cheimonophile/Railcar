@@ -13,7 +13,7 @@ using namespace std;
 namespace lexer {
 
 
-  deque<Token> lex(ifstream& in);
+  deque<Token> lex(istream& in);
 
 
 }

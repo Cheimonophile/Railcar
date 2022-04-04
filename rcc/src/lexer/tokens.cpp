@@ -3,99 +3,54 @@
 
 namespace lexer {
 
-  /**
-   * @brief Determines the status of a token that is meant to be an SEMI
-   * 
-   * @param status 
-   * @return TokenType 
-   */
-  TokenType SEMI_match(string token) {
-    if(token.length() < 1) return TokenType::_PARTIAL;
-    if(token == SEMI) return TokenType::SEMI;
-    return TokenType::_ERROR;
-  }
-  
-  /**
-   * @brief Determines the status of a token that is meant to be an LCARROT
-   * 
-   * @param status 
-   * @return TokenType 
-   */
-  TokenType LCARROT_match(string token) {
-    if(token.length() < 1) return TokenType::_PARTIAL;
-    if(token == LCARROT) return TokenType::LCARROT;
-    return TokenType::_ERROR;
-  }
-
-  /** 
-   * @brief Determines the status of a token that is meant to be an RCARROT
-   * 
-   * @param status 
-   * @return TokenType 
-   */
-  TokenType RCARROT_match(string token) {
-    if(token.length() < 1) return TokenType::_PARTIAL;
-    if(token == RCARROT) return TokenType::RCARROT;
-    return TokenType::_ERROR;
-  }
 
 
   /**
-   * @brief Determines the status of a token that is meant to be the const
-   * keyword
+   * @brief Initializes the token match functions
    * 
-   * @param token 
-   * @return TokenType 
    */
-  TokenType KW_CONST_match(string token) {
-    if(token == KW_CONST)
-      return TokenType::KW_CONST;
-    if (
-      token.length() < KW_CONST.length() && 
-      token == KW_CONST.substr(0, token.length())
-    ) return TokenType::_PARTIAL;
-    return TokenType::_ERROR;
-  }
+  vector<function<TokenType(string)>> get_match_functions() {
 
-  /**
-   * @brief 
-   * 
-   * @param token 
-   * @return TokenType 
-   */
-  TokenType KW_DEF_match(string token) {
-    if(token == KW_DEF)
-      return TokenType::KW_DEF;
-    if (
-      token.length() < KW_DEF.length() && 
-      token == KW_DEF.substr(0, token.length())
-    ) return TokenType::_PARTIAL;
-    return TokenType::_ERROR;
-  }
+    // init the static match functions vector
+    static vector<std::function<TokenType(string)>> match_functions;
 
+    // return if it already exists
+    static atomic<bool> match_functions_initialized = false;
+    if(match_functions_initialized) return match_functions;
+    match_functions_initialized = true;
 
-  /**
-   * @brief Determines the status of a token that is meant to be an DOT
-   * 
-   * @param status 
-   * @return TokenType 
-   */
-  TokenType DOT_match(string token) {
-    if(token.length() < 1) return TokenType::_PARTIAL;
-    if(token == DOT) return TokenType::DOT;
-    return TokenType::_ERROR;
-  }
+    // initialize single
+    for(auto keyword: keywords) {
 
-  /**
-   * @brief Determines the status of a token that is meant to be an ASSIGN
-   * 
-   * @param status 
-   * @return TokenType 
-   */
-  TokenType ASSIGN_match(string token) {
-    if(token.length() < 1) return TokenType::_PARTIAL;
-    if(token == ASSIGN) return TokenType::ASSIGN;
-    return TokenType::_ERROR;
+      // if the token is only one char in length
+      if(keyword_map[keyword].length() == 1) {
+        match_functions.push_back([keyword](string token) {
+          if(token.length() < 1) return TokenType::_PARTIAL;
+          if(token == keyword_map[keyword]) return keyword;
+          return TokenType::_ERROR;
+        });
+      }
+
+      // if the token is multiple chars in length
+      else if(keyword_map[keyword].length() > 1) {
+        match_functions.push_back([keyword](string token) {
+          if(token == keyword_map[keyword])
+            return keyword;
+          if (
+            token.length() < keyword_map[keyword].length() && 
+            token == keyword_map[keyword].substr(0, token.length())
+          ) return TokenType::_PARTIAL;
+          return TokenType::_ERROR;
+        });
+      }
+
+    }
+
+    // fill in complex match functions
+    match_functions.push_back(NAT_LITERAL_match);
+    match_functions.push_back(ID_match);
+
+    return match_functions;
   }
 
   /**

@@ -1,0 +1,32 @@
+
+
+// global constant definition
+def nat x 32
+
+// global function definition
+def int main(str[] args) {
+
+
+  // assignment with expression
+  def nat z (
+    def x 1;
+    def mut y 2;
+    y += 1;
+    x + y
+  );
+
+  // anonymous function callback
+  object.add_observer(() {
+    ...
+  });
+
+
+
+
+}
+
+=> {
+ ret 32
+}
+
+// type definitions
