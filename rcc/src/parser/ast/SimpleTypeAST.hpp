@@ -3,6 +3,7 @@
 
 #include "ASTNode.hpp"
 #include "TypeAST.hpp"
+#include "IdAST.hpp"
 
 #include "lexer/tokens.hpp"
 
@@ -12,7 +13,7 @@ namespace parser::ast {
 
 
   class SimpleTypeAST: public TypeAST {
-    vector<lexer::Token> uuname;
+    unique_ptr<IdAST> uuname;
   public:
     static unique_ptr<SimpleTypeAST> parse(deque<lexer::Token>& tokens);
   };
