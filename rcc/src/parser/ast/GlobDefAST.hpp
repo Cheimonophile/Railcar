@@ -15,7 +15,7 @@ namespace parser::ast {
   class GlobDefAST: public StatementAST {
     lexer::Token def;
     unique_ptr<TypeAST> type;
-    lexer::Token name;
+    lexer::Token id;
   public:
     static unique_ptr<GlobDefAST> parse(deque<lexer::Token>& tokens);
   };

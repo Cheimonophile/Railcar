@@ -13,8 +13,8 @@ namespace parser::ast {
   unique_ptr<SimpleTypeAST> SimpleTypeAST::parse(deque<lexer::Token>& tokens) {
     auto self = make_unique<SimpleTypeAST>();
 
-    cout << "MORE TO DO: " << "SimpleTypeAST" << endl;
-    exit(1);
+    // id
+    self->id = IdAST::parse(tokens);
 
     return self;
   }

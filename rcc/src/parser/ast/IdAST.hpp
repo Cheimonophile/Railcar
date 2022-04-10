@@ -11,7 +11,7 @@ namespace parser::ast {
 
 
   class IdAST: public ASTNode {
-    vector<lexer::Token> uuname;
+    vector<lexer::Token> ids;
   public:
     static unique_ptr<IdAST> parse(deque<lexer::Token>& tokens);
   };

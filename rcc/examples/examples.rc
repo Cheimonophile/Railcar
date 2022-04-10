@@ -4,7 +4,7 @@
 def nat x 32
 
 // global function definition
-def int main(str[] args) {
+def int main(str[] args) => {
 
 
   // assignment with expression
@@ -16,7 +16,7 @@ def int main(str[] args) {
   );
 
   // anonymous function callback
-  object.add_observer(() {
+  object.add_observer(() => {
     ...
   });
 

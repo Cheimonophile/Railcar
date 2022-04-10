@@ -13,7 +13,7 @@ namespace parser::ast {
 
 
   class SimpleTypeAST: public TypeAST {
-    unique_ptr<IdAST> uuname;
+    unique_ptr<IdAST> id;
   public:
     static unique_ptr<SimpleTypeAST> parse(deque<lexer::Token>& tokens);
   };

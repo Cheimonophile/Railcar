@@ -24,8 +24,18 @@ namespace parser::ast {
     self->def = tokens[0];
     tokens.pop_front();
 
-    // id
+    // type
     self->type = TypeAST::parse(tokens);
+
+    // ID
+    if(tokens.empty()) error_unexpected_EOF();
+    if(tokens[0].type != lexer::TokenType::ID) {
+      error_expected("<identifier>", tokens[0].line, tokens[0].value);
+    }
+    self->id = tokens[0];
+    tokens.pop_front();
+
+    // expression
 
 
 
