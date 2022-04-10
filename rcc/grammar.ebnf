@@ -7,27 +7,38 @@ statement ::=
   global_definition || ...;
 
 global_definition ::=
-  DEF type ID expr;
+  DEF type ID expression;
 
 type ::=
-  id ||
+  simple_type ||
   # struct_type ||
   # array_type ||
+  # AUTO ||
   ...; # (LCARROT ID (COMMA ID)* RCARROT)?;
+
+simple_type ::=
+  id;
 
 id ::=
   (ID RES)* ID;
 
 expression ::=
-  scoped_expression ||
+  # scoped_expression ||
+  literal ||
   ...;
 
-scoped_expression ::=
-  LPAREN expression RPAREN;
+# scoped_expression ::=
+#  LPAREN expression RPAREN;
 
-nat_literal ::= NAT_LIT;
+literal ::=
+  nat_literal ||
+#  int_litaral ||
+  ...;
 
+nat_literal ::=
+  NAT_LITERAL;
 
+# int_litaral  ::= (PLUS | MINUS) nat_literal;
 
 
 
@@ -52,4 +63,4 @@ ASSIGN = "="
 ID = "[a-zA-Z]\w*"
 
 ### Literals
-NAT_LIT = "0(\d|_)+"
+NAT_LITERAL = "0(\d|_)+"

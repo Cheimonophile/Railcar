@@ -21,6 +21,7 @@ namespace lexer {
 
     // punctuation
     SEMI,
+    RES,
     LCARROT,
     RCARROT,
 
@@ -53,6 +54,7 @@ namespace lexer {
 
   // static tokens
   static string SEMI = ";";
+  static string RES = "::";
   static string LCARROT = "<";
   static string RCARROT = ">";
   static string KW_CONST = "const";
@@ -64,6 +66,7 @@ namespace lexer {
   // keyword vector (to proper ordering)
   static vector<TokenType> keywords = {
     TokenType::SEMI,
+    TokenType::RES,
     TokenType::LCARROT,
     TokenType::RCARROT,
     TokenType::KW_CONST,
@@ -76,6 +79,7 @@ namespace lexer {
   // keyword map
   static map<TokenType, string> keyword_map = {
     {TokenType::SEMI, SEMI},
+    {TokenType::RES, RES},
     {TokenType::LCARROT, LCARROT},
     {TokenType::RCARROT, RCARROT},
     {TokenType::KW_CONST, KW_CONST},

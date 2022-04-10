@@ -9,8 +9,8 @@ def int main(str[] args) {
 
   // assignment with expression
   def nat z (
-    def x 1;
-    def mut y 2;
+    auto x 1;
+    mut auto y 2;
     y += 1;
     x + y
   );
