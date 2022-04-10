@@ -12,6 +12,7 @@
 namespace parser::ast {
 
   class NatLiteralAST: public LiteralAST {
+    lexer::Token value;
   public:
     static unique_ptr<NatLiteralAST> parse(deque<lexer::Token>& tokens);
   };

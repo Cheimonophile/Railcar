@@ -38,10 +38,6 @@ namespace parser::ast {
     // expression
     self->value = LiteralAST::parse(tokens);
 
-
-    cout << "MORE TO DO: " << "GlobDefAST" << endl;
-    exit(1);
-
     return self;
   }
 }
