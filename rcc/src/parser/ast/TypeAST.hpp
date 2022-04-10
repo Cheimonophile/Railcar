@@ -11,7 +11,6 @@ namespace parser::ast {
 
 
   class TypeAST: public ASTNode {
-    vector<lexer::Token> uuname;
   public:
     static unique_ptr<TypeAST> parse(deque<lexer::Token>& tokens);
   };

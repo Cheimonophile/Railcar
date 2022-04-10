@@ -13,7 +13,7 @@ type ::=
   simple_type ||
   # struct_type ||
   # array_type ||
-  # AUTO ||
+  # auto_type ||
   ...; # (LCARROT ID (COMMA ID)* RCARROT)?;
 
 simple_type ::=

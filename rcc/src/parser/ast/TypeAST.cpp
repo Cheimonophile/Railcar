@@ -2,6 +2,8 @@
 
 #include "errors.hpp"
 
+#include "SimpleTypeAST.hpp"
+
 namespace parser::ast {
 
   /**
@@ -11,12 +13,16 @@ namespace parser::ast {
    * @return unique_ptr<GlobDefAST> 
    */
   unique_ptr<TypeAST> TypeAST::parse(deque<lexer::Token>& tokens) {
-    auto self = make_unique<TypeAST>();
+
+    // if the type is a simple type
+    if(tokens[0].type == lexer::TokenType::ID) {
+      return SimpleTypeAST::parse(tokens);
+    }
 
     cout << "MORE TO DO: " << "TypeAST" << endl;
     exit(1);
 
-    return self;
+    return nullptr;
   }
 
 
