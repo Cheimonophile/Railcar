@@ -7,7 +7,7 @@ statement ::=
   global_definition || ...;
 
 global_definition ::=
-  DEF type ID expression;
+  DEF type ID literal;
 
 type ::=
   simple_type ||
@@ -22,9 +22,9 @@ simple_type ::=
 id ::=
   (ID RES)* ID;
 
-expression ::=
+# expression ::=
+#   literal ||
   # scoped_expression ||
-  literal ||
   ...;
 
 # scoped_expression ::=
